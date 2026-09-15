@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102A43" />
+  <title>USTA | أُسطى — خدماتك في مكان واحد</title>
+  <meta name="description" content="USTA | أُسطى — منصة لطلب الفنيين الموثوقين، خدمات السيارات، الونش والطوارئ، مع Portfolio وتقييمات وشات داخل المنصة." />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="USTA أُسطى"><img src="assets/usta-logo.svg" alt="USTA أُسطى" /></a>
+    <nav class="nav" id="mainNav">
+      <a href="#home" class="active">الرئيسية</a>
+      <a href="#services">الخدمات</a>
+      <a href="#technicians">الفنيين</a>
+      <a href="#auto">الونش والطوارئ</a>
+      <a href="#how">كيف تعمل USTA</a>
+      <a href="#join">انضم كمقدم خدمة</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" id="loginBtn">تسجيل الدخول</button>
+      <button class="btn btn-primary" id="signupBtn">إنشاء حساب</button>
+      <button class="icon-btn mobile-menu" id="menuBtn" aria-label="فتح القائمة">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+      <div class="hero-content container">
+        <div class="hero-copy">
+          <span class="eyebrow">كل فني.. في مكان واحد</span>
+          <h1>محتاج فني؟<br><span>أُسطى عندك.</span></h1>
+          <p>اختار الخدمة، شوف الفنيين الموثوقين وPortfolio شغلهم، اتواصل معاهم، تابع الطلب وادفع بأمان.</p>
+          <div class="quick-search">
+            <div class="search-field">
+              <span>🔎</span>
+              <input id="heroSearch" type="text" placeholder="مثلاً: كهربائي، سباك، ونش..." />
+            </div>
+            <select id="locationSelect" aria-label="الموقع">
+              <option value="">📍 القاهرة</option>
+              <option>مدينة نصر</option>
+              <option>التجمع</option>
+              <option>الجيزة</option>
+              <option>الفيوم</option>
+            </select>
+            <button class="btn btn-primary hero-btn" id="heroSearchBtn">اطلب خدمة الآن</button>
+          </div>
+          <div class="chips" id="heroChips">
+            <button data-service="كهرباء">كهرباء</button>
+            <button data-service="سباكة">سباكة</button>
+            <button data-service="تكييف">تكييف</button>
+            <button data-service="أجهزة منزلية">أجهزة منزلية</button>
+            <button data-service="ونش">ونش</button>
+            <button data-service="ميكانيكا">ميكانيكا</button>
+          </div>
+          <div class="trust-row">
+            <div><span>✓</span><b>فنيون موثقون</b></div>
+            <div><span>⚡</span><b>خدمة سريعة</b></div>
+            <div><span>⌂</span><b>تغطية محلية</b></div>
+            <div><span>💳</span><b>دفع آمن</b></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-tech-card">
+            <div class="tech-avatar big-avatar">👨‍🔧</div>
+            <div>
+              <small>فني موثق</small>
+              <h3>أحمد محمد</h3>
+              <div class="rating">★★★★★ <span>4.9</span></div>
+            </div>
+            <span class="verified">✓</span>
+          </div>
+          <div class="hero-stat-card"><strong>+50,000</strong><span>عميل سعيد</span></div>
+          <div class="hero-stat-card second"><strong>+10,000</strong><span>فني موثوق</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-trust-strip">
+      <div class="container trust-strip-grid">
+        <div><span class="trust-strip-icon">🛡️</span><div><strong>فنيون موثقون</strong><small>بيانات وهوية ومراجعات</small></div></div>
+        <div><span class="trust-strip-icon">📍</span><div><strong>متاحين بالقرب منك</strong><small>الفني يظهر وهو شغال الآن فقط</small></div></div>
+        <div><span class="trust-strip-icon">💬</span><div><strong>USTA Chat</strong><small>تواصل مباشر داخل الطلب</small></div></div>
+        <div><span class="trust-strip-icon">🧾</span><div><strong>فاتورة وسجل خدمة</strong><small>كل طلب محفوظ عندك</small></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head"><div><span class="section-kicker">خدمات USTA</span><h2>كل اللي محتاجه.. في مكان واحد</h2></div><button class="link-btn" id="allServicesBtn">عرض كل الخدمات ←</button></div>
+        <div class="service-grid" id="serviceGrid"></div>
+      </div>
+    </section>
+
+    <section class="split-banners container" id="auto">
+      <div class="banner auto-banner">
+        <div><span class="eyebrow orange">USTA AUTO</span><h3>سيارتك عطلت؟</h3><p>ونش وخدمات طوارئ على مدار الساعة.</p><button class="btn btn-primary" data-open-emergency>أحتاج مساعدة الآن</button></div>
+        <div class="banner-icon">🚘</div>
+      </div>
+      <div class="banner home-banner">
+        <div><span class="eyebrow orange">للمنزل</span><h3>كل حاجة ليها أُسطى</h3><p>من أصغر إصلاح لأكبر مشروع.</p><button class="btn btn-dark" data-scroll="services">اطلب خدمة للمنزل</button></div>
+        <div class="banner-icon">🏠</div>
+      </div>
+    </section>
+
+    <section class="section light" id="how">
+      <div class="container">
+        <div class="section-head centered"><div><span class="section-kicker">البداية سهلة</span><h2>كيف تعمل USTA؟</h2></div></div>
+        <div class="steps">
+          <div class="step"><span>1</span><div class="step-icon">🔎</div><h3>اختار الخدمة</h3><p>حدد المشكلة والمكان والموعد المناسب.</p></div>
+          <div class="step"><span>2</span><div class="step-icon">👨‍🔧</div><h3>اختار مقدم الخدمة</h3><p>شوف الـPortfolio والتقييمات وقرب الفني منك.</p></div>
+          <div class="step"><span>3</span><div class="step-icon">💬</div><h3>تواصل وتابع</h3><p>شات داخل USTA وتتبع مباشر لوصول الفني.</p></div>
+          <div class="step"><span>4</span><div class="step-icon">💳</div><h3>ادفع وقيّم</h3><p>ادفع بأمان وخد فاتورتك وسجل الخدمة.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section live-tech-section" id="live">
+      <div class="container live-tech-wrap">
+        <div class="live-tech-copy">
+          <span class="section-kicker">USTA LIVE</span>
+          <h2>شوف مين شغال دلوقتي حواليك.</h2>
+          <p>إحنا مش بنعرض كل الفنيين وخلاص. الفني لا يظهر على الخريطة إلا بعد ما يدخل حسابه ويفعل <strong>«شغال الآن»</strong>، وبعدها يظهر للعملاء حسب تخصصه وموقعه.</p>
+          <div class="live-rules">
+            <div><b>01</b><span>الفني يفتح وضع «شغال الآن»</span></div>
+            <div><b>02</b><span>USTA تستخدم موقعه الحالي</span></div>
+            <div><b>03</b><span>يظهر فقط للطلبات المناسبة لتخصصه</span></div>
+          </div>
+          <button class="btn btn-dark" data-scroll="services">ابدأ بطلب خدمة</button>
+        </div>
+        <div class="live-tech-preview">
+          <div class="live-map-grid"></div>
+          <div class="map-road road-1"></div><div class="map-road road-2"></div><div class="map-road road-3"></div>
+          <div class="map-user-pin">●<small>أنت هنا</small></div>
+          <div class="map-pin pin-a"><span>⚡</span><b>4.9</b></div>
+          <div class="map-pin pin-b"><span>❄️</span><b>4.8</b></div>
+          <div class="map-pin pin-c"><span>🚰</span><b>4.9</b></div>
+          <div class="map-status">● فنيون شغالين الآن</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="technicians">
+      <div class="container">
+        <div class="section-head"><div><span class="section-kicker">ناس حقيقية</span><h2>اكتشف الفنيين قبل ما تختار</h2></div><button class="link-btn" id="viewTechsBtn">عرض كل الفنيين ←</button></div>
+        <div class="tech-grid" id="techGrid"></div>
+      </div>
+    </section>
+
+    <section class="section trust-section">
+      <div class="container">
+        <div class="section-head centered"><div><span class="section-kicker">مش مجرد تطبيق</span><h2>ليه الناس تختار USTA؟</h2><p class="section-sub">من أول ما تختار الخدمة لحد ما تستلمها، كل خطوة معمولة عشان تكون أوضح وأكثر أمانًا.</p></div></div>
+        <div class="benefit-grid">
+          <article class="benefit-card"><div class="benefit-icon">✅</div><h3>تقييمات حقيقية</h3><p>التقييم مرتبط بطلب مكتمل، عشان تعرف رأي ناس تعاملت مع الفني فعلًا.</p></article>
+          <article class="benefit-card"><div class="benefit-icon">📸</div><h3>Portfolio موثوق</h3><p>شوف شغل الفني قبل ما تختاره، وميّز بين أعماله المضافة وأعماله المنفذة عبر USTA.</p></article>
+          <article class="benefit-card"><div class="benefit-icon">📍</div><h3>موقع مباشر</h3><p>في الخدمات المتاحة، تقدر تعرف مين قريب منك ومتى بدأ الفني استقبال الطلبات.</p></article>
+          <article class="benefit-card"><div class="benefit-icon">🛡️</div><h3>دعم وشكاوى</h3><p>كل طلب له سجل، والتواصل والدفع والتقييم يفضلوا داخل المنصة.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section portfolio-section">
+      <div class="container">
+        <div class="section-head"><div><span class="section-kicker">Portfolio موثوق</span><h2>شوف شغل الفني قبل ما تختاره</h2></div><span class="muted">المشاريع المنفذة عبر USTA تحمل علامة ✅ موثق</span></div>
+        <div class="portfolio-grid">
+          <article class="portfolio-card"><div class="work-image before-after"><span>قبل</span><span>بعد</span></div><div class="portfolio-body"><h3>تركيب لوحة كهرباء</h3><small>تم التنفيذ عبر USTA · مدينة نصر</small></div></article>
+          <article class="portfolio-card"><div class="work-image bath"><span>قبل</span><span>بعد</span></div><div class="portfolio-body"><h3>تجديد حمام بالكامل</h3><small>تم التنفيذ عبر USTA · الرحاب</small></div></article>
+          <article class="portfolio-card"><div class="work-image ac"><span>قبل</span><span>بعد</span></div><div class="portfolio-body"><h3>صيانة وتنظيف تكييف</h3><small>تم التنفيذ عبر USTA · مصر الجديدة</small></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section join-section" id="join">
+      <div class="container join-wrap">
+        <div class="join-copy"><span class="section-kicker">للفنيين ومقدمي الخدمة</span><h2>شغلك يتكلم عنك.</h2><p>اعمل Profile احترافي، اعرض Portfolio شغلك، استقبل طلبات، واجمع تقييمات حقيقية تبني سمعتك على USTA.</p><div class="join-points"><div>✓ Portfolio شخصي</div><div>✓ تقييمات حقيقية</div><div>✓ طلبات قريبة منك</div><div>✓ متابعة أرباحك</div></div><button class="btn btn-primary" id="joinNowBtn">انضم كمقدم خدمة</button></div>
+        <div class="join-card"><div class="badge">USTA PRO</div><div class="profile-mock"><div class="mini-avatar">🧑‍🔧</div><div><strong>أحمد محمد</strong><small>كهربائي · موثق ✅</small></div><span class="rating">★ 4.9</span></div><div class="mini-stats"><div><strong>248</strong><small>خدمة</small></div><div><strong>96%</strong><small>التزام</small></div><div><strong>87</strong><small>تقييم</small></div></div><div class="mini-chart"><div style="height:40%"></div><div style="height:65%"></div><div style="height:52%"></div><div style="height:80%"></div><div style="height:96%"></div></div></div>
+      </div>
+    </section>
+
+    <section class="section numbers-section">
+      <div class="container numbers-wrap">
+        <div><span class="numbers-value">+10K</span><span class="numbers-label">مقدم خدمة مستهدف</span></div>
+        <div><span class="numbers-value">+50K</span><span class="numbers-label">عميل مستهدف</span></div>
+        <div><span class="numbers-value">24/7</span><span class="numbers-label">خدمات طريق وطوارئ</span></div>
+        <div><span class="numbers-value">100%</span><span class="numbers-label">سجل رقمي للطلب</span></div>
+      </div>
+    </section>
+
+    <section class="section reviews-section">
+      <div class="container"><div class="section-head centered"><div><span class="section-kicker">آراء العملاء</span><h2>الناس بتقول إيه عن USTA؟</h2></div></div><div class="reviews"><article class="review"><div class="review-top"><span class="avatar">👨</span><div><strong>محمد أحمد</strong><small>القاهرة</small></div><span class="rating">★★★★★</span></div><p>الفني وصل في الميعاد وشغله ممتاز، والأجمد إني شفت شغله قبل ما أطلبه.</p></article><article class="review"><div class="review-top"><span class="avatar">👩</span><div><strong>سارة علي</strong><small>مدينة نصر</small></div><span class="rating">★★★★★</span></div><p>الشات والمتابعة خلوني حاسة إن الطلب تحت السيطرة من أول لحظة.</p></article><article class="review"><div class="review-top"><span class="avatar">👨</span><div><strong>أحمد محمود</strong><small>الشيخ زايد</small></div><span class="rating">★★★★★</span></div><p>طلبت خدمة تكييف، وخلصت بسرعة من غير ما ألف على أكتر من صنايعي.</p></article></div></div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="container faq-wrap">
+        <div><span class="section-kicker">أسئلة سريعة</span><h2>قبل ما تبدأ</h2><p class="section-sub">أهم الحاجات اللي العميل أو مقدم الخدمة ممكن يسأل عنها.</p></div>
+        <div class="faq-list">
+          <details><summary>هل الفني يظهر على الخريطة طول الوقت؟</summary><p>لا. يظهر فقط عندما يدخل حسابه ويفعل «شغال الآن»، ثم يختفي عند إيقاف الحالة.</p></details>
+          <details><summary>هل أقدر أشوف شغل الفني قبل الطلب؟</summary><p>أيوه. كل مقدم خدمة عنده Profile وPortfolio وتقييمات العملاء.</p></details>
+          <details><summary>هل فيه خدمات سيارات وونش؟</summary><p>أيوه، USTA تشمل خدمات المنزل، الميكانيكا، البطاريات، الإطارات، الونش والطوارئ.</p></details>
+          <details><summary>هل التواصل بيكون داخل USTA؟</summary><p>نعم، عندنا USTA Chat مرتبط بالطلب، عشان كل تفاصيل الخدمة تفضل محفوظة.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container final-cta-card">
+        <div><span class="section-kicker">جاهز تبدأ؟</span><h2>مشكلة صغيرة أو طوارئ كبيرة.. ليها أُسطى.</h2><p>اختار الخدمة، حدد مكانك، وسيب الباقي على USTA.</p></div>
+        <div class="final-cta-actions"><button class="btn btn-primary" id="finalServiceBtn">اطلب خدمة الآن</button><button class="btn btn-ghost" id="finalJoinBtn">انضم كمقدم خدمة</button></div>
+      </div>
+    </section>
+
+    <section class="app-banner container"><div><span class="section-kicker">USTA في أي وقت</span><h2>خلي أُسطى معاك من الموبايل.</h2><p>تابع الطلب، افتح الشات، واستقبل الإشعارات في لحظتها.</p><div class="store-buttons"><button class="store"> App Store</button><button class="store">▶ Google Play</button></div></div><div class="phone"><div class="phone-screen"><div class="phone-top">USTA <span>9:41</span></div><div class="phone-search">🔎 ابحث عن خدمة...</div><div class="phone-cats"><span>⚡</span><span>🚰</span><span>❄️</span><span>🚘</span></div><div class="phone-card"><strong>فنيون قريبون منك</strong><small>3 فنيين متاحين الآن</small><button>عرض الفنيين</button></div></div></div></section>
+  </main>
+
+  <footer class="footer"><div class="container footer-grid"><div class="footer-brand"><div class="brand footer-logo"><img src="assets/usta-logo.svg" alt="USTA أُسطى" /></div><p>كل مكان.. له أُسطى.</p><div class="socials"><span>f</span><span>◎</span><span>in</span><span>▶</span></div></div><div><h4>USTA</h4><a href="#home">الرئيسية</a><a href="#how">كيف تعمل</a><a href="#join">انضم للعمل</a><a href="#services">الخدمات</a></div><div><h4>مساعدة</h4><a href="#">الأسئلة الشائعة</a><a href="#">الدعم</a><a href="#">الشروط والأحكام</a><a href="#">سياسة الخصوصية</a></div><div class="newsletter"><h4>ابقى على تواصل</h4><p>عروض وتحديثات USTA على إيميلك.</p><div class="newsletter-box"><input placeholder="البريد الإلكتروني" type="email" id="newsletterEmail"><button id="newsletterBtn">→</button></div></div></div><div class="container copyright">© 2026 USTA — جميع الحقوق محفوظة.</div></footer>
+
+  <!-- Auth Modal -->
+  <div class="modal" id="authModal" aria-hidden="true"><div class="modal-card large"><button class="modal-close" data-close>×</button><div class="auth-head"><div class="auth-logo">USTA</div><h2 id="authTitle">ابدأ مع USTA</h2><p id="authSubtitle">اختار نوع الحساب المناسب ليك</p></div><div class="role-grid" id="roleGrid"><button class="role-card" data-role="client"><span>👤</span><strong>أنا عميل</strong><small>أبحث عن فني أو خدمة</small></button><button class="role-card" data-role="technician"><span>🧑‍🔧</span><strong>أنا فني</strong><small>أقدم خدمات للعملاء</small></button><button class="role-card" data-role="tow"><span>🚛</span><strong>أنا ونش / Auto</strong><small>أقدم خدمات طريق وطوارئ</small></button></div><div class="auth-form" id="authForm"><input id="fullName" placeholder="الاسم بالكامل" /><input id="email" type="email" placeholder="البريد الإلكتروني" /><input id="password" type="password" placeholder="كلمة المرور" /><div id="serviceTypeWrap" class="hidden"><select id="serviceType"><option value="">اختر تخصصك</option><option>كهرباء</option><option>سباكة</option><option>تكييف</option><option>أجهزة منزلية</option><option>نجارة</option><option>نقاشة</option><option>ميكانيكا سيارات</option><option>كهرباء سيارات</option></select></div><button class="btn btn-primary full" id="completeAuth">إنشاء الحساب</button></div><button class="switch-auth" id="switchAuth">لديك حساب بالفعل؟ تسجيل الدخول</button></div></div>
+
+  <!-- Work Area Modal -->
+  <div class="modal" id="workAreaModal" aria-hidden="true"><div class="modal-card large location-card"><button class="modal-close" data-close>×</button><div class="auth-head"><div class="auth-logo">📍</div><h2>حدد نطاق شغلك</h2><p>لما تفعل «شغال الآن» مش لازم تظهر للمدينة كلها. USTA هتحدد ظهورك داخل نطاق تختاره حول موقعك.</p></div><div class="work-area-box"><div class="work-area-title"><strong>موقعك الأساسي</strong><span class="area-live" id="workGpsBadge">غير محدد</span></div><div class="gps-status" id="workAreaGpsStatus">اضغط لتحديد موقعك الحالي، وبعدها اختار نصف قطر العمل.</div><button class="btn btn-primary full" id="workAreaUseGps">📍 تحديد موقعي وإدارة النطاق</button></div><div class="work-area-box"><div class="work-area-title"><strong>نطاق العمل</strong><small class="muted">الفنيين يظهروا للعملاء داخل النطاق فقط</small></div><div class="radius-grid" id="workRadiusGrid"><button data-radius="3">3 كم</button><button data-radius="5" class="selected">5 كم</button><button data-radius="10">10 كم</button><button data-radius="20">20 كم</button></div><div class="area-presets" id="areaPresets"><span>اختصار المنطقة</span><button data-area="مدينة نصر">مدينة نصر</button><button data-area="التجمع">التجمع</button><button data-area="مصر الجديدة">مصر الجديدة</button><button data-area="المهندسين">المهندسين</button><button data-area="الجيزة">الجيزة</button><button data-area="الفيوم">الفيوم</button></div></div><div class="zone-summary" id="zoneSummary">📍 سيتم عرضك داخل نطاق 5 كم من موقعك الحالي</div><button class="btn btn-primary full" id="confirmWorkArea">ابدأ العمل الآن</button></div></div>
+
+  <!-- Service Modal -->
+  <div class="modal" id="serviceModal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-close>×</button><div class="modal-icon" id="serviceModalIcon">⚡</div><h2 id="serviceModalTitle">اطلب خدمة</h2><p>حدد المشكلة بسرعة، وبعدها هنعرض لك أقرب مقدمي الخدمة.</p><textarea id="problemText" placeholder="اكتب وصف سريع للمشكلة..."></textarea><div class="row"><input id="serviceAddress" placeholder="📍 العنوان"/><select id="serviceUrgency"><option>عادي</option><option>عاجل الآن</option><option>حجز موعد</option></select></div><button class="btn btn-primary full" id="submitService">ابحث عن فنيين</button></div></div>
+
+  <!-- Emergency Modal -->
+  <div class="modal" id="locationModal" aria-hidden="true"><div class="modal-card large location-card"><button class="modal-close" data-close>×</button><div class="auth-head"><div class="auth-logo">📍</div><h2 id="locationTitle">فين تحب الخدمة تكون؟</h2><p id="locationSubtitle">اكتب العنوان أو استخدم GPS عشان نجيب لك الفنيين المتاحين حواليك.</p></div><div class="location-choice-grid"><button class="location-choice active" id="addressChoice"><span>✍️</span><strong>اكتب العنوان</strong><small>اكتب منطقتك أو العنوان بالتفصيل</small></button><button class="location-choice" id="gpsChoice"><span>📡</span><strong>استخدم GPS</strong><small>حدد موقعك الحالي من المتصفح</small></button></div><div id="addressPanel" class="location-panel"><input id="serviceAddress2" placeholder="مثلاً: عباس العقاد، مدينة نصر" /><button class="btn btn-primary full" id="confirmAddress">عرض الفنيين المتاحين</button></div><div id="gpsPanel" class="location-panel hidden"><div class="gps-status" id="gpsStatus">اضغط على الزر لتحديد موقعك بدقة.</div><button class="btn btn-primary full" id="useGps">📍 افتح GPS وحدد موقعي</button></div><div class="map-wrap hidden" id="mapWrap"><div class="map-topbar"><div><strong id="mapServiceName">كهرباء</strong><small id="mapLocationLabel">الفنيين المتاحين الآن</small></div><span class="online-pill"><i></i><b id="onlineCount">0</b> متاح الآن</span></div><div id="technicianMap" class="sketch-map"></div><div class="map-legend"><span><i class="legend-dot client"></i>موقعك</span><span><i class="legend-dot tech"></i>فني شغال الآن</span></div></div></div></div>
+
+  <!-- Emergency Modal -->
+  <div class="modal" id="emergencyModal" aria-hidden="true"><div class="modal-card emergency"><button class="modal-close" data-close>×</button><div class="emergency-icon">🚨</div><h2>مساعدة طارئة</h2><p>هنحدد أقرب ونش أو مقدم خدمة متاح حسب موقعك.</p><div class="emergency-actions"><button class="em-btn" data-em="ونش">🚛 ونش</button><button class="em-btn" data-em="بطارية">🔋 بطارية</button><button class="em-btn" data-em="كاوتش">🛞 كاوتش</button><button class="em-btn" data-em="ميكانيكي">🔧 ميكانيكي</button></div><button class="btn btn-primary full" id="locateEmergency">استخدام موقعي الآن</button></div></div>
+
+  <!-- App Shell -->
+  <div class="app-shell" id="appShell" aria-hidden="true">
+    <div class="app-overlay" id="appOverlay"></div>
+    <aside class="sidebar"><div class="sidebar-top"><button class="brand inverse app-logo-home" id="appBrandHome" type="button"><img src="assets/usta-logo.svg" alt="USTA أُسطى" /></button><button class="icon-btn sidebar-close" id="sidebarClose" type="button">×</button></div><div class="user-mini"><div class="mini-avatar" id="sideAvatar">👤</div><div><strong id="sideName">مستخدم USTA</strong><small id="sideRole">عميل</small></div></div><nav class="side-nav" id="sideNav"></nav><button class="logout" id="logoutBtn" type="button">↪ تسجيل الخروج</button></aside>
+    <section class="app-main"><div class="app-header"><button class="icon-btn app-menu" id="appMenu" type="button">☰</button><button class="icon-btn app-home" id="appHeaderHome" type="button" title="الموقع الرئيسي">⌂</button><div><span class="section-kicker" id="appRoleKicker">حساب USTA</span><h2 id="appViewTitle">لوحة التحكم</h2></div><div class="app-header-actions"><button class="icon-btn" id="openChatTop" type="button">💬</button><button class="icon-btn" id="openNotifications" type="button">🔔</button></div></div><div class="app-content" id="appContent"></div></section>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>

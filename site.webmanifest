@@ -1,0 +1,9 @@
+{
+  "name": "USTA | أُسطى",
+  "short_name": "USTA",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7f9fb",
+  "theme_color": "#102A43",
+  "icons": [{"src":"assets/favicon.svg","sizes":"64x64","type":"image/svg+xml"}]
+}
